@@ -27,7 +27,7 @@ public class Wetland {
     // Atributes (objects from another classes )
 
      /** Object of type EnvironmentalPlan,  contains the environmental plan of the wetland */
-    private EnvironmentalPlan environmentalPlan;
+    private double environmentalPlan;
     /**Arraylist of object Specie, contains all the species in the wetland */
     private Specie[] species;
     /**Arraylist of object Event, contains all the events of the wetland  */
@@ -154,10 +154,10 @@ public class Wetland {
         } else {
             out += "Unprotected area\n";
         }
-        if (environmentalPlan != null) {
-            out += environmentalPlan.toString() + "\n";
+        if (environmentalPlan != 0.0) {
+            out += "The compilance percentage of the environmental plan is: \n";
         } else {
-            out += "The wetland doesn't have an environmental plan ";
+            out += "The wetland doesn't have an environmental plan\n ";
         }
 
         out += "\nTotal species of terrestial flora: " + numberSpeciesTerrestialFlora();
@@ -326,21 +326,6 @@ public class Wetland {
     public void setLocationName(String locationName) {
         this.locationName = locationName;
     }
-
-    /**
-     * @return EnvironmentalPlan return the environmentalPlan
-     */
-    public EnvironmentalPlan getEnvironmentalPlan() {
-        return environmentalPlan;
-    }
-
-    /**
-     * @param environmentalPlan the environmentalPlan to set
-     */
-    public void setEnvironmentalPlan(EnvironmentalPlan environmentalPlan) {
-        this.environmentalPlan = environmentalPlan;
-    }
-
 
     /**
      * @return LocationZone return the locationZone
