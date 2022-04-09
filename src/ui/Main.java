@@ -72,9 +72,8 @@ public class Main {
             case 7:
                 showInformationWetlands();
                 break;
-
             case 8:
-                showNumberOfAnimalsInWetlands();
+                showMaxNumberOfAnimalsInWetlands();
                 break;
         }
     }
@@ -201,8 +200,8 @@ public class Main {
         System.out.println("\n* The Wetland with the less flora is: " + controlObject.nameWetlandWithLessFlora());
     }
 
-    public void showNumberOfAnimalsInWetlands() {
+    public void showMaxNumberOfAnimalsInWetlands() {
         System.out.println("\n***** The number of the wetland with more animals : *****\n\n");
-        System.out.println(controlObject.ammountAnimalsInWetlands());
+        System.out.println(controlObject.nameWetlandWithMoreAnimals());
     }
 }

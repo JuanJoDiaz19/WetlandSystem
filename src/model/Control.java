@@ -29,7 +29,7 @@ public class Control {
 
 	//-------------------  Methods to manage the adition of wetlands ------------------------------ 
 
-    public int indexFirstNull() {
+    public int indexFirstNullWetlands() {
         int indexFirstNull = -1;
 		for (int i = 0; i < MAX_NUMBER_WETLANDS && indexFirstNull == -1; i++) {
 			if (wetlands[i] == null) {
@@ -50,7 +50,7 @@ public class Control {
 	}
     public String addWetland(String name, boolean locationZone, boolean type, double area, String urlOfThePicture, boolean protectedArea, String locationName) {
         String out = "" ;
-		int emptyPos = indexFirstNull();
+		int emptyPos = indexFirstNullWetlands();
 		
 		if (!isWetlandIn(name)) {
 			if(emptyPos == -1) {
@@ -106,7 +106,7 @@ public class Control {
 	
 	public String toString() {
 		String out = "";
-		for (int i = 0; i < wetlands.length && i != indexFirstNull(); i++) {
+		for (int i = 0; i < wetlands.length && i != indexFirstNullWetlands(); i++) {
 			out += wetlands[i].toString();
 		}
 		return out;
@@ -116,7 +116,7 @@ public class Control {
 	public String wetlandsWithSameSpecie(String nameSpecie) {
 		String out = "\n*** Wetlands that have that specie: ***";
 		String names = " ";
-		for (int i = 0; i != -1 && i != indexFirstNull(); i++) {
+		for (int i = 0; i != -1 && i != indexFirstNullWetlands(); i++) {
 			if (wetlands[i].hasSpecie(nameSpecie)) {
 				names +="\n* " + wetlands[i].getName();
 			}
@@ -132,7 +132,7 @@ public class Control {
 	public String nameWetlandWithLessFlora() {
 		String out = "";
 		int counterMin = wetlands[0].numberSpeciesAquaticFlora() + wetlands[0].numberSpeciesTerrestialFlora();
-		for (int i = 0; i != -1 && i != indexFirstNull(); i++) {
+		for (int i = 0; i != -1 && i != indexFirstNullWetlands(); i++) {
 			int tempVar = wetlands[i].numberSpeciesTerrestialFlora() + wetlands[i].numberSpeciesAquaticFlora(); 
 			if (tempVar <= counterMin) {
 				counterMin = tempVar;
@@ -145,16 +145,16 @@ public class Control {
 
 	public String amountMaintenanceWetlandsInYear(int year) {
 		String out = "";
-		for (int i = 0; i < wetlands.length && i < indexFirstNull(); i++) {
+		for (int i = 0; i < wetlands.length && i < indexFirstNullWetlands(); i++) {
 			out += "* " + wetlands[i].getName() + ": " + wetlands[i].numberMaintenanceInYear(year) + "\n";	
 		}
 		return out; 
 	}
 
-	public String ammountAnimalsInWetlands() {
+	public String nameWetlandWithMoreAnimals() {
 		String out = "";
 		int maxCounter = wetlands[0].numberOfAnimals();
-		for (int i = 0; i < wetlands.length && i < indexFirstNull(); i++) {
+		for (int i = 0; i < wetlands.length && i < indexFirstNullWetlands(); i++) {
 			int varTemp = wetlands[i].numberOfAnimals();
 			if (maxCounter <= varTemp) {
 				maxCounter = varTemp;

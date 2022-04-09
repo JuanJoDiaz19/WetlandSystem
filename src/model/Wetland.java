@@ -27,7 +27,7 @@ public class Wetland {
     // Atributes (objects from another classes )
 
      /** Object of type EnvironmentalPlan,  contains the environmental plan of the wetland */
-    private double environmentalPlan;
+    private double compilancePercentageEnviromentalPlan;
     /**Arraylist of object Specie, contains all the species in the wetland */
     private Specie[] species;
     /**Arraylist of object Event, contains all the events of the wetland  */
@@ -154,7 +154,7 @@ public class Wetland {
         } else {
             out += "Unprotected area\n";
         }
-        if (environmentalPlan != 0.0) {
+        if (compilancePercentageEnviromentalPlan != 0.0) {
             out += "The compilance percentage of the environmental plan is: \n";
         } else {
             out += "The wetland doesn't have an environmental plan\n ";
@@ -242,8 +242,8 @@ public class Wetland {
 
     public int numberOfAnimals() {
         int num = 0;
-        for (int i = 0; i < species.length && i < indexFirstNullEvents() ; i++) {
-            if (species[i].getType() == TypeSpecie.AQUATIC || species[i].getType() == TypeSpecie.BIRD || species[i].getType() == TypeSpecie.MAMMAL ) {
+        for (int i = 0; i < species.length && i < indexFirstNullSpecies() ; i++) {
+            if ((species[i].getType() == TypeSpecie.AQUATIC) || (species[i].getType() == TypeSpecie.BIRD) || (species[i].getType() == TypeSpecie.MAMMAL) ) {
                 num++;
             }
         }
@@ -348,8 +348,26 @@ public class Wetland {
         return type;
     }
 
-    
+    /**
+     * @param type the type to set
+     */
+    public void setType(TypeWetland type) {
+        this.type = type;
+    }
 
-   
+    /**
+     * @return double return the compilancePercentageEnviromentalPlan
+     */
+    public double getCompilancePercentageEnviromentalPlan() {
+        return compilancePercentageEnviromentalPlan;
+    }
+
+    /**
+     * @param compilancePercentageEnviromentalPlan the compilancePercentageEnviromentalPlan to set
+     */
+    public void setCompilancePercentageEnviromentalPlan(double compilancePercentageEnviromentalPlan) {
+        this.compilancePercentageEnviromentalPlan = compilancePercentageEnviromentalPlan;
+    }
+
 
 }
