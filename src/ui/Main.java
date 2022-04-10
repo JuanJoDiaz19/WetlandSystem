@@ -173,7 +173,7 @@ public class Main {
         description = sc.nextLine();
         System.out.println("Please enter the day of the event: ");
         day = sc.nextInt();
-        sc.nextLine();
+        sc.nextLine();  
         System.out.println("Please enter the month of the event: ");
         month = sc.nextInt();
         sc.nextLine();
