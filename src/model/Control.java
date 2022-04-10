@@ -67,14 +67,14 @@ public class Control {
 
 	public int findIndexWetland (String id) {
 		boolean flag = false;
-		int foundCircle = -1;
+		int foundWetland = -1;
 		for (int i = 0; i < wetlands.length && !flag; i++) {
 			if (wetlands[i]!=null && wetlands[i].getName().equals(id) ) {
 				flag = true;
-				foundCircle = i;
+				foundWetland = i;
 			}
 		}
-		return foundCircle;
+		return foundWetland;
 	}
 
 	//-------------------  Methods to manage the adition of species ------------------------------ 
