@@ -7,9 +7,14 @@ To compile: javac -cp src src/ui/Main.java -d bin
 To execute: java -cp bin ui.Main
 To generate javadoc: javadoc src/ui/Main.java -d doc/API/
 */
+/** Container class of the program
+ * @author JuanJoseDiaz
+ * 
+ * */
 public class Main {
+    /**Object of type Scanner to read data through th console */
     private static Scanner sc;
-
+    /**Object from the control class*/
     private Control controlObject;
     public static void main(String[] args) {
 
@@ -24,14 +29,18 @@ public class Main {
 		    mainObject.answerOption(option);
 		}while (option !=0);
     }
-
-
+    /**
+     * Constructor form the class Main
+     */
     public Main() {
         sc = new Scanner(System.in);
         controlObject = new Control();
     }
 
-
+    /**
+     * Method to show the menu in the console and ask the user to select an option
+     * @return option int with the answer that the user gave
+     */
     public int showMenu(){
         int option;
         System.out.println("\n\nMenu of options, please insert an option: "+
@@ -48,7 +57,10 @@ public class Main {
         sc.nextLine();
         return option;
     }
-
+    /**
+     * Method that executes the actions of the menu according to the option gave as a parameter
+     * @param option int, option != null
+     */
     public void answerOption(int option) {
         switch (option) {
             case 1:
@@ -77,7 +89,10 @@ public class Main {
                 break;
         }
     }
-
+    /**
+     * Method that asks the user for a number of year and shows all the wetlands that has events with type mantenance in that year
+     *<b> pre:</b> The object controlObject should be initialized
+     */
     public void showNumberMantenanceWetlands() {
         System.out.println("Enter the year you want to search for: ");
         int year = sc.nextInt();
@@ -85,11 +100,18 @@ public class Main {
         System.out.println("\n***** Number of mantenance of wetlands *****\n");
         System.out.println(controlObject.amountMaintenanceWetlandsInYear(year));
     }
-
+    /**
+     * Shows the information of each wetland in the system
+     * <b> pre:</b> The object controlObject should be initialized
+     */
     public void showInformationWetlands() {
         System.out.println(controlObject.toString());
     }
-
+    /**
+     * Method that reads all the information to create a wetland and add it to the array of wetlands in the object controlObject
+     * <b> pre:</b> The object controlObject should be initialized
+     * <b> pos:</b> An object type Wetland is added to the array wetlands of the class control
+     */
     public void registerWetland() {
         String name, urlOfThePicture, locationName;
         boolean locationZone, type, protectedArea;
@@ -129,7 +151,11 @@ public class Main {
         locationName = sc.nextLine();
         System.out.println(controlObject.addWetland(name, locationZone, type, area, urlOfThePicture, protectedArea, locationName));
     }
-
+    /**
+     * Method that reads all the information to create a specie and adds it to the array of species in an object wetland
+     * <b> pre:</b> The object controlObject should be initialized
+     * <b> pos:</b> An object of type Specie is added to the array of species in an object of type wetland
+     */
     public void registerSpecie() {
         String nameWetland, name, scientificName;
         boolean migratorySpecie;
@@ -157,7 +183,11 @@ public class Main {
         sc.nextLine();
         System.out.println(controlObject.addSpecie(nameWetland, name, scientificName, migratorySpecie, optionType));
     }
-
+    /**
+     * Method that reads all the information to create an event and adds it to the array of events in an object wetland
+     * <b> pre:</b> The object controlObject should be initialized
+     * <b> pos:</b> An object of type Event is added to the array of events in an object of type wetland
+     */
     public void registerEvent() {
         String nameWetland, eventClient,description;
         double price; 
@@ -189,17 +219,26 @@ public class Main {
         sc.nextLine();
         System.out.println(controlObject.addEvent(nameWetland, eventClient, price, description, day, month, year, optionTypeEvent));
     }
-
+    /**
+     * Method that reads the name of a specie and shows in console all the names of the wetlands that have that specie
+     * <b> pre:</b> The object controlObject should be initialized
+     */
     public void showSameSpecieInWetlands() {
         System.out.println("Enter the name the specie to search: ");
         String nameSpecie = sc.nextLine();
         System.out.println(controlObject.wetlandsWithSameSpecie(nameSpecie));
     }
-
+    /**
+     * Method that shows in console the name of the wetland with less species of flora
+     * <b> pre:</b> The object controlObject should be initialized
+     */
     public void showWetlandWithLessFlora(){
         System.out.println("\n* The Wetland with the less flora is: " + controlObject.nameWetlandWithLessFlora());
     }
-
+    /**
+     * Method that shows in console the name of the wetland that has the biggest ammount of animals
+     * <b> pre:</b> The object controlObject should be initialized
+     */
     public void showMaxNumberOfAnimalsInWetlands() {
         System.out.println("\n***** The number of the wetland with more animals : *****\n\n");
         System.out.println(controlObject.nameWetlandWithMoreAnimals());
