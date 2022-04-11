@@ -13,7 +13,7 @@ public class Wetland {
     private String name;
     /**The location zone of the wetland */
     private LocationZone locationZone;
-    /**The type of the wetland, could be private(True), public(False) */
+    /**The type of the wetland*/
     private TypeWetland type;
     /**The area of the wetland in km2 */
     private double area;
@@ -23,14 +23,11 @@ public class Wetland {
     private boolean protectedArea;
     /**The name of the neighborhood or township  */
     private String locationName;
-
-    // Atributes (objects from another classes )
-
-     /** Object of type EnvironmentalPlan,  contains the environmental plan of the wetland */
+    /** Object of type EnvironmentalPlan,  contains the environmental plan of the wetland */
     private double compilancePercentageEnviromentalPlan;
-    /**Arraylist of object Specie, contains all the species in the wetland */
+    /**Array of objects Specie, contains all the species in the wetland */
     private Specie[] species;
-    /**Arraylist of object Event, contains all the events of the wetland  */
+    /**Array of objects Event, contains all the events of the wetland  */
     private Event[] events;
 
     /**
@@ -69,7 +66,11 @@ public class Wetland {
     }
 
     //------------------------------ Methods to add Species ---------------------------
-
+    /**
+	 * Method that returns the number of the index of the first null space in the array of species
+	 * <b> pre:</b> The array species should be initialized
+	 * @return indexFirstNull int, index of the first null, -1 if it is full
+	 */
     public int indexFirstNullSpecies() {
         int indexFirstNull = -1;
 		for (int i = 0; i < species.length && indexFirstNull == -1; i++) {
@@ -79,7 +80,11 @@ public class Wetland {
 		}
 		return indexFirstNull;
     }
-
+    /**
+	 * Method that indicates wether if the class Wetland has a specie with the name entered in the parameter
+	 * @param name String with the name of the specie to search
+	 * @return flag boolean, True is there is another specie with the same name, False if not
+	 */
     public boolean isSpecieIn (String name) {
 		boolean flag = false;
 		for (int i = 0; i < species.length && !flag; i++) {
@@ -89,7 +94,11 @@ public class Wetland {
 		}
 		return flag;
 	}
-
+    /**
+     * Method to add specie to the array of species 
+     * @param specie Object of type specie created before in the class control
+     * @return out String with message of the result of the process
+     */
     public String addSpecie(Specie specie) {
         String out = "" ;
 		int emptyPos = indexFirstNullSpecies();
@@ -108,7 +117,11 @@ public class Wetland {
     }
 
     //------------------------------ Methods to add events ---------------------------
-
+    /**
+	 * Method that returns the number of the index of the first null space in the array of events
+	 * <b> pre:</b> The array events should be initialized
+	 * @return indexFirstNull int, index of the first null, -1 if it is full
+	 */
     public int indexFirstNullEvents() {
         int indexFirstNull = -1;
 		for (int i = 0; i < events.length && indexFirstNull == -1; i++) {
@@ -118,7 +131,11 @@ public class Wetland {
 		}
 		return indexFirstNull;
     }
-
+    /**
+     * Method to add event to the array of events 
+     * @param event Object of type event created before in the class control
+     * @return out String with message of the result of the process
+     */
     public String addEvent(Event event) {
         String out = "" ;
 		int emptyPos = indexFirstNullEvents();
@@ -132,7 +149,11 @@ public class Wetland {
     }
 
     // ------------------- Method toString ---------------------
+
     @Override
+    /**
+     * Method toString of the class that shows all the information of the class 
+    */
     public String toString() {
         String out = "";
         out += "\n\n***** Information of wetland "+ name + " *****"+ "\n\nLocation zone: ";
@@ -170,6 +191,11 @@ public class Wetland {
     }
 
     //--------------- Methods to calculate the the amount of species in the wetland by type --------------------
+    /**
+     * Method that return the number of species of type terrestial flora
+     * <b> pre:</b> the array species should be initilized
+     * @return cont int number of species of that type
+     */
     public int numberSpeciesTerrestialFlora() {
         int cont = 0;
         for (int i = 0; i < species.length && i < indexFirstNullSpecies(); i++) {
@@ -179,6 +205,11 @@ public class Wetland {
         }
         return cont;
     }
+    /**
+     * Method that return the number of species of type aquatic flora
+     * <b> pre:</b> the array species should be initilized
+     * @return cont int number of species of that type
+     */
     public int numberSpeciesAquaticFlora() {
         int cont = 0;
         for (int i = 0; i < species.length && i < indexFirstNullSpecies(); i++) {
@@ -188,6 +219,11 @@ public class Wetland {
         }
         return cont;
     }
+    /**
+     * Method that return the number of species of type birds
+     * <b> pre:</b> the array species should be initilized
+     * @return cont int number of species of that type
+     */
     public int numberSpeciesBirds() {
         int cont = 0;
         for (int i = 0; i < species.length && i < indexFirstNullSpecies(); i++) {
@@ -197,6 +233,11 @@ public class Wetland {
         }
         return cont;
     }
+    /**
+     * Method that return the number of species of type mammals
+     * <b> pre:</b> the array species should be initilized
+     * @return cont int number of species of that type
+     */
     public int numberSpeciesMammals() {
         int cont = 0;
         for (int i = 0; i < species.length && i < indexFirstNullSpecies(); i++) {
@@ -206,6 +247,11 @@ public class Wetland {
         }
         return cont;
     }
+    /**
+     * Method that return the number of species of type aquatic
+     * <b> pre:</b> the array species should be initilized
+     * @return cont int number of species of that type
+     */
     public int numberSpeciesAquatic() {
         int cont = 0;
         for (int i = 0; i < species.length && i < indexFirstNullSpecies(); i++) {
@@ -217,7 +263,12 @@ public class Wetland {
     }
 
     // ------------- Method to consult if a wetland has a certain specie ------------------------
-
+    /**
+     * Method that checks if the name of the specie entered as a parameter is in the array
+     * <b> pre:</b> the array species should be initilized
+     * @param nameSpecie String, != null
+     * @return flag true, True if it is in, flase if not
+     */
     public boolean hasSpecie(String nameSpecie) {
         boolean flag = false;
         for (int i = 0; i != -1 && i < indexFirstNullSpecies(); i++) {
@@ -228,7 +279,12 @@ public class Wetland {
         }
         return flag;
     }
-
+    /**
+     * Method that given a year returns the number of events of type maintenance in the array of events that it has
+     * <b> pre:</b> the array events should be initilized
+     * @param year int
+     * @return counter int with number of events of that type
+     */
     public int numberMaintenanceInYear(int year) {
         int counter  =0;
         for (int i = 0; i < events.length  && i < indexFirstNullEvents(); i++) {
@@ -239,7 +295,10 @@ public class Wetland {
         return counter;
     }
     // ------------------- Methods getters and setters -------------------------
-
+    /**
+     * Method that returns the number of animals in a wetland
+     * @return num int
+     */
     public int numberOfAnimals() {
         int num = 0;
         for (int i = 0; i < species.length && i < indexFirstNullSpecies() ; i++) {

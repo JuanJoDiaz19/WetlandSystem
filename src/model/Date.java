@@ -30,6 +30,10 @@ public class Date {
         this.year = year;
     }
     @Override
+    /**
+     * Method toString that returns a Strings with all the information of a date
+     * @returns out String
+     */
     public String toString() {
         return ""+ day + "/" + month + "/" + year;
     }

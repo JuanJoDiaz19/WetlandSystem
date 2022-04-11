@@ -58,6 +58,10 @@ public class Event {
     // ------------ Method to String -------------
 
     @Override
+    /**
+     * Method toString that returns a Strings with all the information of a event
+     * @return out String
+     */
     public String toString() {
         String out = "";
         out += "\n--- Informacion of event ---\n\nName of the client: " + eventClient +"\nPrice of the event: " + price +

@@ -52,7 +52,10 @@ public class Specie {
     }    
 
     //--------------- Method toString ---------------
-
+    /**
+     * Method toString that returns a Strings with all the information of a specie
+     * @return out String
+     */
     public String toString() {
         String out = "";
         out += "\n--- Information of the specie: " + name + " ---\n"+
